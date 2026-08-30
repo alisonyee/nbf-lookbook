@@ -151,6 +151,16 @@ html, body {
   }
 }
 
+.filter-hint {
+  font-family: 'Inter', 'Liberation Sans', Arial, sans-serif;
+  font-size: 11.5px;
+  line-height: 1.4;
+  color: #6B7385;
+  margin: -2px 0 14px 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #E3E6EC;
+}
+
 .filter-group {
   margin-top: 16px;
   padding-top: 12px;
@@ -253,18 +263,6 @@ html, body {
   cursor: not-allowed;
 }
 .export-btn:disabled:hover { background: #FFFFFF; color: #16233F; }
-
-.reset-btn {
-  font-family: 'IBM Plex Mono', 'Liberation Mono', monospace;
-  font-size: 11.5px;
-  background: #FFFFFF;
-  border: 1px solid #B7BFCC;
-  color: #5B6B8C;
-  padding: 5px 12px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-.reset-btn:hover { background: #EDF0F4; color: #16233F; }
 
 .grid {
   display: grid;
@@ -462,6 +460,7 @@ html, body {
       <button id="sidebarCollapse" type="button" class="collapse-btn" title="Collapse filters">&#171;</button>
     </div>
   </div>
+  <div class="filter-hint">Filter by category (Arts &amp; Culture, Environment&hellip;), org size, board size, meeting cadence &amp; medium</div>
   
     <div class="filter-group">
       <h3>Category</h3>
@@ -494,7 +493,6 @@ html, body {
       <span class="results-count-wrap"><span id="resultsCount">42</span> of 42 organizations</span>
       
     <div class="toolbar-controls">
-      <button type="button" id="resetFiltersToolbar" class="reset-btn">&#8635; Reset filters</button>
       <div class="sort-control">
         <span class="sort-label">Sort</span>
         <button type="button" class="sort-btn active" data-sort="alpha">A&ndash;Z</button>
@@ -1280,14 +1278,6 @@ html, body {
     checkboxes.forEach(function (cb) { cb.checked = false; });
     applyFilters();
   });
-
-  var resetToolbarBtn = document.getElementById('resetFiltersToolbar');
-  if (resetToolbarBtn) {
-    resetToolbarBtn.addEventListener('click', function () {
-      checkboxes.forEach(function (cb) { cb.checked = false; });
-      applyFilters();
-    });
-  }
 
   var noResultsClear = document.getElementById('noResultsClear');
   if (noResultsClear) {
